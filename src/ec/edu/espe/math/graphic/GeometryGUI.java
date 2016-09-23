@@ -18,8 +18,8 @@ public class GeometryGUI {
      */
     public static void main(String[] args) {
         
-       // LoginScreen menu=new LoginScreen();
-       MenuShape menu=new MenuShape(); 
+        LoginScreen menu=new LoginScreen();
+       //MenuShape menu=new MenuShape(); 
        menu.setLocationRelativeTo(null);
         menu.setVisible(true);
        

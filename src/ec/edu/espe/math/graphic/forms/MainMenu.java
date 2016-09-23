@@ -6,6 +6,7 @@
 package ec.edu.espe.math.graphic.forms;
 
 import ec.edu.espe.math.graphic.forms.shapes.MenuShape;
+import ec.edu.espe.math.graphic.forms.solids.SolidAll;
 
 /**
  *
@@ -42,6 +43,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
         jButton1.setText("Solids");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
         jButton2.setText("Shapes");
@@ -91,6 +97,13 @@ public class MainMenu extends javax.swing.JFrame {
         menuShape.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        SolidAll solidAll=new SolidAll();
+        solidAll.setLocationRelativeTo(this);
+        solidAll.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -63,6 +63,8 @@ public class ShapeCircular extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
+
         jLabel2.setText("Radious");
 
         jLabel5.setText("Radious 2");
@@ -72,17 +74,18 @@ public class ShapeCircular extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(31, 31, 31)
-                        .addComponent(txtRadio2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                        .addComponent(txtRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(txtRadio2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,6 +100,8 @@ public class ShapeCircular extends javax.swing.JFrame {
                     .addComponent(txtRadio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(193, Short.MAX_VALUE))
         );
+
+        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
 
         jLabel3.setText("Perimeter");
 
@@ -130,6 +135,8 @@ public class ShapeCircular extends javax.swing.JFrame {
                     .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
+
+        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
 
         jButton1.setText("CALCULAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -209,13 +216,13 @@ public class ShapeCircular extends javax.swing.JFrame {
 
     private void shapeSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shapeSelectionActionPerformed
         if(shapeSelection.getSelectedItem().equals(ShapesCatalog.CIRCLE)){
-            txtRadio2.setEnabled(false);
+           txtRadio2.setVisible(false);
          //   jLabel2.setText("Radio");
-         //   jLabel5.setText("");
+               jLabel5.setVisible(false);
         }
         else{
-            txtRadio2.setEnabled(true);
-           // jLabel5.setText("Radio 2");
+            txtRadio2.setVisible(true);
+            jLabel5.setVisible(true);
         }
     }//GEN-LAST:event_shapeSelectionActionPerformed
 
@@ -229,8 +236,8 @@ public class ShapeCircular extends javax.swing.JFrame {
             ec.edu.espe.math.graphic.utils.PrinterUtil.printResults(txtArea, txtPerimeter, circ.area(), circ.perimeter());
         }catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, "INGRESE DATOS VALIDOS");
-        
-        }
+
+        }  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

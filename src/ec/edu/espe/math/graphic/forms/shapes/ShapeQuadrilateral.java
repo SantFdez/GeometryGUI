@@ -71,6 +71,8 @@ public class ShapeQuadrilateral extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+
         jLabel2.setText("Side 1");
 
         jLabel5.setText("Side 2");
@@ -116,6 +118,8 @@ public class ShapeQuadrilateral extends javax.swing.JFrame {
                 .addContainerGap(148, Short.MAX_VALUE))
         );
 
+        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+
         jLabel3.setText("Perimeter");
 
         jLabel4.setText("Area");
@@ -148,6 +152,8 @@ public class ShapeQuadrilateral extends javax.swing.JFrame {
                     .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
+
+        jPanel3.setBackground(new java.awt.Color(102, 204, 255));
 
         btnCalcular.setText("CALCULAR");
         btnCalcular.addActionListener(new java.awt.event.ActionListener() {
@@ -199,12 +205,11 @@ public class ShapeQuadrilateral extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(jLabel1)))
                 .addContainerGap(32, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(138, 138, 138))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

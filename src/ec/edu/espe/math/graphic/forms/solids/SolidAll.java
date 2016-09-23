@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.math.graphic.forms.shapes;
+package ec.edu.espe.math.graphic.forms.solids;
 
-import ec.edu.espe.math.geometry.shapes.triangles.EquilateralTriangle;
-import ec.edu.espe.math.geometry.shapes.triangles.IsocescelesTriangle;
-import ec.edu.espe.math.geometry.shapes.triangles.ObtuseAngleTriangle;
-import ec.edu.espe.math.geometry.shapes.triangles.RightAngleTriangle;
-import ec.edu.espe.math.geometry.shapes.triangles.ScaleneTriangle;
-import ec.edu.espe.math.geometry.shapes.triangles.Triangle;
+import ec.edu.espe.math.geometry.solids.SolidInterface;
+import ec.edu.espe.math.geometry.solids.circunferences.Sphere;
+import ec.edu.espe.math.geometry.solids.cones.Cone;
+import ec.edu.espe.math.geometry.solids.cubes.Cube;
+import ec.edu.espe.math.geometry.solids.cylinders.Cylinder;
+import ec.edu.espe.math.geometry.solids.frustums.Frustum;
+import ec.edu.espe.math.graphic.forms.MainMenu;
 import ec.edu.espe.math.graphic.forms.text.ShapesCatalog;
 import ec.edu.espe.math.graphic.utils.PrinterUtil;
 import javax.swing.JOptionPane;
@@ -19,19 +20,19 @@ import javax.swing.JOptionPane;
  *
  * @author SONY
  */
-public class ShapeTriangle extends javax.swing.JFrame {
+public class SolidAll extends javax.swing.JFrame {
 
     /**
      * Creates new form ShapeCircular
      */
-    public ShapeTriangle() {
+    public SolidAll() {
         initComponents();
-        shapeSelection.addItem(ShapesCatalog.EQUILATERAL_TRIANGLE);
-        shapeSelection.addItem(ShapesCatalog.ISOCELES_TRIANGLE);
-        shapeSelection.addItem(ShapesCatalog.OBTUSANGLE_TRIANGLE);
+        shapeSelection.addItem(ShapesCatalog.CUBE);
+        shapeSelection.addItem(ShapesCatalog.SPHERE);
+        shapeSelection.addItem(ShapesCatalog.CONE);
         
-        shapeSelection.addItem(ShapesCatalog.RIGHT_ANGLE_TRIANGLE);
-        shapeSelection.addItem(ShapesCatalog.SCALENE_TRIANGLE);
+        shapeSelection.addItem(ShapesCatalog.CYLINDER);
+        shapeSelection.addItem(ShapesCatalog.FRUSTUM);
     }
 
     /**
@@ -55,16 +56,17 @@ public class ShapeTriangle extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtPerimeter = new javax.swing.JTextField();
+        txtVolume = new javax.swing.JTextField();
         txtArea = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 0, 36)); // NOI18N
-        jLabel1.setText("Triangle");
+        jLabel1.setText("Solids");
 
         shapeSelection.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
         shapeSelection.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +75,7 @@ public class ShapeTriangle extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
         lblLado1.setText("Lado1");
 
@@ -116,9 +118,9 @@ public class ShapeTriangle extends javax.swing.JFrame {
                 .addContainerGap(162, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
 
-        jLabel3.setText("Perimeter");
+        jLabel3.setText("Volume");
 
         jLabel4.setText("Area");
 
@@ -133,7 +135,7 @@ public class ShapeTriangle extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtPerimeter, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                    .addComponent(txtVolume, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
                     .addComponent(txtArea))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -143,7 +145,7 @@ public class ShapeTriangle extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtPerimeter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtVolume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -151,7 +153,7 @@ public class ShapeTriangle extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel3.setBackground(new java.awt.Color(153, 255, 153));
 
         jButton1.setText("CALCULAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +178,7 @@ public class ShapeTriangle extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,14 +202,14 @@ public class ShapeTriangle extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
+                        .addGap(220, 220, 220)
                         .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,56 +232,57 @@ public class ShapeTriangle extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void shapeSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shapeSelectionActionPerformed
-        if (shapeSelection.getSelectedItem().equals(ShapesCatalog.EQUILATERAL_TRIANGLE)) {
+         if (shapeSelection.getSelectedItem().equals(ShapesCatalog.CUBE)) {
             txtVal2.setEnabled(false);
             txtVal3.setEnabled(false);
             PrinterUtil.setLabels(lblLado1, lblLado2, lblLado3, "Side", "       ", "      ");
-        } else if (shapeSelection.getSelectedItem().equals(ShapesCatalog.ISOCELES_TRIANGLE)) {
-            txtVal2.setEnabled(true);
-            txtVal3.setEnabled(false);
-            PrinterUtil.setLabels(lblLado1, lblLado2, lblLado3, "Base", "Height", "        ");
-        } else if (shapeSelection.getSelectedItem().equals(ShapesCatalog.OBTUSANGLE_TRIANGLE)) {
+        } else if (shapeSelection.getSelectedItem().equals(ShapesCatalog.CONE)) {
             txtVal2.setEnabled(true);
             txtVal3.setEnabled(true);
-            PrinterUtil.setLabels(lblLado1, lblLado2, lblLado3, "Side 1", "Side 2", "Side 3");
-        } else if (shapeSelection.getSelectedItem().equals(ShapesCatalog.RIGHT_ANGLE_TRIANGLE)) {
+            PrinterUtil.setLabels(lblLado1, lblLado2, lblLado3, "Height", "Side", "Radious");
+        } else if (shapeSelection.getSelectedItem().equals(ShapesCatalog.SPHERE)) {
+            txtVal2.setEnabled(false);
+            txtVal3.setEnabled(false);
+            PrinterUtil.setLabels(lblLado1, lblLado2, lblLado3, "Radious", "         ", "      ");
+        } else if (shapeSelection.getSelectedItem().equals(ShapesCatalog.CYLINDER)) {
             txtVal2.setEnabled(true);
             txtVal3.setEnabled(false);
-            PrinterUtil.setLabels(lblLado1, lblLado2, lblLado3, "Base", "Height", "      ");
-         } else if (shapeSelection.getSelectedItem().equals(ShapesCatalog.SCALENE_TRIANGLE)) {
+            PrinterUtil.setLabels(lblLado1, lblLado2, lblLado3, "Radious", "Height", "      ");
+         } else if (shapeSelection.getSelectedItem().equals(ShapesCatalog.FRUSTUM)) {
             txtVal2.setEnabled(true);
             txtVal3.setEnabled(true);
-            PrinterUtil.setLabels(lblLado1, lblLado2, lblLado3, "Side 1", "Side 2", "Side 3");        }
+            PrinterUtil.setLabels(lblLado1, lblLado2, lblLado3, "Radious 1", "Radious 2", "Height");
+        }
     }//GEN-LAST:event_shapeSelectionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
-            Triangle triangle=null;
-            if(shapeSelection.getSelectedItem().equals(ShapesCatalog.EQUILATERAL_TRIANGLE)){
-                triangle=new EquilateralTriangle(Float.parseFloat(txtVal1.getText()));
+            SolidInterface solid=null;
+            if(shapeSelection.getSelectedItem().equals(ShapesCatalog.CUBE)){
+                solid=new Cube(Float.parseFloat(txtVal1.getText()));
             }
-            else if(shapeSelection.getSelectedItem().equals(ShapesCatalog.ISOCELES_TRIANGLE)){
-                triangle=new IsocescelesTriangle(Float.parseFloat(txtVal1.getText()),Float.parseFloat(txtVal2.getText()));
+            else if(shapeSelection.getSelectedItem().equals(ShapesCatalog.CONE)){
+                solid=new Cone(Float.parseFloat(txtVal1.getText()),Float.parseFloat(txtVal2.getText()),Float.parseFloat(txtVal3.getText()));
             }
-            else if(shapeSelection.getSelectedItem().equals(ShapesCatalog.OBTUSANGLE_TRIANGLE)){
-                triangle=new ObtuseAngleTriangle(Float.parseFloat(txtVal1.getText()),Float.parseFloat(txtVal2.getText()),Float.parseFloat(txtVal3.getText()));
+            else if(shapeSelection.getSelectedItem().equals(ShapesCatalog.SPHERE)){
+                solid=new Sphere(Float.parseFloat(txtVal1.getText()));
             }
-            else if(shapeSelection.getSelectedItem().equals(ShapesCatalog.RIGHT_ANGLE_TRIANGLE)){
-                triangle=new RightAngleTriangle(Float.parseFloat(txtVal1.getText()),Float.parseFloat(txtVal2.getText()));
+            else if(shapeSelection.getSelectedItem().equals(ShapesCatalog.CYLINDER)){
+                solid=new Cylinder(Float.parseFloat(txtVal2.getText()),Float.parseFloat(txtVal1.getText()));
             }
-             else if(shapeSelection.getSelectedItem().equals(ShapesCatalog.SCALENE_TRIANGLE)){
-                triangle=new ScaleneTriangle(Float.parseFloat(txtVal1.getText()),Float.parseFloat(txtVal2.getText()),Float.parseFloat(txtVal3.getText()));
+             else if(shapeSelection.getSelectedItem().equals(ShapesCatalog.FRUSTUM)){
+                solid=new Frustum(Float.parseFloat(txtVal3.getText()),Float.parseFloat(txtVal2.getText()),Float.parseFloat(txtVal1.getText()));
             }
-            ec.edu.espe.math.graphic.utils.PrinterUtil.printResults(txtArea, txtPerimeter, triangle.area(), triangle.perimeter());
+            ec.edu.espe.math.graphic.utils.PrinterUtil.printResults(txtArea, txtVolume, solid.area(), solid.volume());
         }catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, "INGRESE DATOS VALIDOS");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       MenuShape menuShape=new MenuShape();
-       menuShape.setLocationRelativeTo(this);
-       menuShape.setVisible(true);
+       MainMenu mainMenu=new MainMenu();
+       mainMenu.setLocationRelativeTo(this);
+       mainMenu.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -300,21 +303,23 @@ public class ShapeTriangle extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ShapeTriangle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SolidAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ShapeTriangle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SolidAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ShapeTriangle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SolidAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ShapeTriangle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SolidAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ShapeTriangle().setVisible(true);
+                new SolidAll().setVisible(true);
             }
         });
     }
@@ -333,9 +338,9 @@ public class ShapeTriangle extends javax.swing.JFrame {
     private javax.swing.JLabel lblLado3;
     private javax.swing.JComboBox<String> shapeSelection;
     private javax.swing.JTextField txtArea;
-    private javax.swing.JTextField txtPerimeter;
     private javax.swing.JTextField txtVal1;
     private javax.swing.JTextField txtVal2;
     private javax.swing.JTextField txtVal3;
+    private javax.swing.JTextField txtVolume;
     // End of variables declaration//GEN-END:variables
 }

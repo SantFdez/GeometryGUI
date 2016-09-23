@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.math.graphic.forms.shapes;
 
+import ec.edu.espe.math.conversion.Conversion;
 import ec.edu.espe.math.geometry.shapes.triangles.EquilateralTriangle;
 import ec.edu.espe.math.geometry.shapes.triangles.IsocescelesTriangle;
 import ec.edu.espe.math.geometry.shapes.triangles.ObtuseAngleTriangle;
@@ -13,6 +14,7 @@ import ec.edu.espe.math.geometry.shapes.triangles.ScaleneTriangle;
 import ec.edu.espe.math.geometry.shapes.triangles.Triangle;
 import ec.edu.espe.math.graphic.forms.text.ShapesCatalog;
 import ec.edu.espe.math.graphic.utils.PrinterUtil;
+import ec.edu.espe.util.UnitConstants;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,6 +34,23 @@ public class ShapeTriangle extends javax.swing.JFrame {
         
         shapeSelection.addItem(ShapesCatalog.RIGHT_ANGLE_TRIANGLE);
         shapeSelection.addItem(ShapesCatalog.SCALENE_TRIANGLE);
+        
+        
+         unitIn.addItem(UnitConstants.MM);
+        unitIn.addItem(UnitConstants.CM);
+        unitIn.addItem(UnitConstants.DM);
+        unitIn.addItem(UnitConstants.M);
+        unitIn.addItem(UnitConstants.DAM);
+        unitIn.addItem(UnitConstants.HM);
+        unitIn.addItem(UnitConstants.KM);
+
+        unitOut.addItem(UnitConstants.MM);
+        unitOut.addItem(UnitConstants.CM);
+        unitOut.addItem(UnitConstants.DM);
+        unitOut.addItem(UnitConstants.M);
+        unitOut.addItem(UnitConstants.DAM);
+        unitOut.addItem(UnitConstants.HM);
+        unitOut.addItem(UnitConstants.KM);
     }
 
     /**
@@ -52,11 +71,15 @@ public class ShapeTriangle extends javax.swing.JFrame {
         txtVal2 = new javax.swing.JTextField();
         lblLado3 = new javax.swing.JLabel();
         txtVal3 = new javax.swing.JTextField();
+        unitIn = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtPerimeter = new javax.swing.JTextField();
         txtArea = new javax.swing.JTextField();
+        unitOut = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -81,22 +104,33 @@ public class ShapeTriangle extends javax.swing.JFrame {
 
         lblLado3.setText("Lado3");
 
+        unitIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unitInActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Units");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLado2)
-                    .addComponent(lblLado1)
-                    .addComponent(lblLado3))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblLado2)
+                        .addComponent(lblLado1)
+                        .addComponent(lblLado3))
+                    .addComponent(jLabel8))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(unitIn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVal3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVal1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVal2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +147,11 @@ public class ShapeTriangle extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLado3)
                     .addComponent(txtVal3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(unitIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
@@ -122,6 +160,14 @@ public class ShapeTriangle extends javax.swing.JFrame {
 
         jLabel4.setText("Area");
 
+        unitOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unitOutActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Units");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -129,13 +175,16 @@ public class ShapeTriangle extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtPerimeter, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                    .addComponent(txtArea))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtPerimeter, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                        .addComponent(txtArea))
+                    .addComponent(unitOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +197,11 @@ public class ShapeTriangle extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(unitOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 204));
@@ -176,7 +229,7 @@ public class ShapeTriangle extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,13 +254,13 @@ public class ShapeTriangle extends javax.swing.JFrame {
                         .addGap(42, 42, 42)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(191, 191, 191)
                         .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +274,7 @@ public class ShapeTriangle extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -255,6 +308,8 @@ public class ShapeTriangle extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
             Triangle triangle=null;
+            Conversion conv=new Conversion();
+
             if(shapeSelection.getSelectedItem().equals(ShapesCatalog.EQUILATERAL_TRIANGLE)){
                 triangle=new EquilateralTriangle(Float.parseFloat(txtVal1.getText()));
             }
@@ -270,7 +325,7 @@ public class ShapeTriangle extends javax.swing.JFrame {
              else if(shapeSelection.getSelectedItem().equals(ShapesCatalog.SCALENE_TRIANGLE)){
                 triangle=new ScaleneTriangle(Float.parseFloat(txtVal1.getText()),Float.parseFloat(txtVal2.getText()),Float.parseFloat(txtVal3.getText()));
             }
-            ec.edu.espe.math.graphic.utils.PrinterUtil.printResults(txtArea, txtPerimeter, triangle.area(), triangle.perimeter());
+            ec.edu.espe.math.graphic.utils.PrinterUtil.printResults(txtArea, txtPerimeter, conv.convertSquare(triangle.area(),unitIn.getSelectedItem().toString(),unitOut.getSelectedItem().toString()), conv.convert(triangle.perimeter(),unitIn.getSelectedItem().toString(),unitOut.getSelectedItem().toString()));
         }catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, "INGRESE DATOS VALIDOS");
         }
@@ -282,6 +337,15 @@ public class ShapeTriangle extends javax.swing.JFrame {
        menuShape.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void unitInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitInActionPerformed
+        // lblUnits.setText(unitIn.getSelectedItem().toString());
+    }//GEN-LAST:event_unitInActionPerformed
+
+    private void unitOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitOutActionPerformed
+        // Conversion conv= new Conversion();
+        //  conv.convert(Float.parseFloat(txtPerimeter.getText()), , unit2)
+    }//GEN-LAST:event_unitOutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,6 +389,8 @@ public class ShapeTriangle extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -337,5 +403,7 @@ public class ShapeTriangle extends javax.swing.JFrame {
     private javax.swing.JTextField txtVal1;
     private javax.swing.JTextField txtVal2;
     private javax.swing.JTextField txtVal3;
+    private javax.swing.JComboBox<String> unitIn;
+    private javax.swing.JComboBox<String> unitOut;
     // End of variables declaration//GEN-END:variables
 }

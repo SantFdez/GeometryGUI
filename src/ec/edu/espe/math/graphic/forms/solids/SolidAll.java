@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.math.graphic.forms.solids;
 
+import ec.edu.espe.math.conversion.Conversion;
 import ec.edu.espe.math.geometry.solids.SolidInterface;
 import ec.edu.espe.math.geometry.solids.circunferences.Sphere;
 import ec.edu.espe.math.geometry.solids.cones.Cone;
@@ -14,6 +15,7 @@ import ec.edu.espe.math.geometry.solids.frustums.Frustum;
 import ec.edu.espe.math.graphic.forms.MainMenu;
 import ec.edu.espe.math.graphic.forms.text.ShapesCatalog;
 import ec.edu.espe.math.graphic.utils.PrinterUtil;
+import ec.edu.espe.util.UnitConstants;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,6 +35,22 @@ public class SolidAll extends javax.swing.JFrame {
         
         shapeSelection.addItem(ShapesCatalog.CYLINDER);
         shapeSelection.addItem(ShapesCatalog.FRUSTUM);
+        
+        unitIn.addItem(UnitConstants.MM);
+        unitIn.addItem(UnitConstants.CM);
+        unitIn.addItem(UnitConstants.DM);
+        unitIn.addItem(UnitConstants.M);
+        unitIn.addItem(UnitConstants.DAM);
+        unitIn.addItem(UnitConstants.HM);
+        unitIn.addItem(UnitConstants.KM);
+
+        unitOut.addItem(UnitConstants.MM);
+        unitOut.addItem(UnitConstants.CM);
+        unitOut.addItem(UnitConstants.DM);
+        unitOut.addItem(UnitConstants.M);
+        unitOut.addItem(UnitConstants.DAM);
+        unitOut.addItem(UnitConstants.HM);
+        unitOut.addItem(UnitConstants.KM);
     }
 
     /**
@@ -53,11 +71,15 @@ public class SolidAll extends javax.swing.JFrame {
         txtVal2 = new javax.swing.JTextField();
         lblLado3 = new javax.swing.JLabel();
         txtVal3 = new javax.swing.JTextField();
+        unitIn = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtVolume = new javax.swing.JTextField();
         txtArea = new javax.swing.JTextField();
+        unitOut = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -83,18 +105,33 @@ public class SolidAll extends javax.swing.JFrame {
 
         lblLado3.setText("Lado3");
 
+        unitIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unitInActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Units");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLado2)
-                    .addComponent(lblLado1)
-                    .addComponent(lblLado3))
-                .addGap(35, 35, 35)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblLado2)
+                            .addComponent(lblLado1)
+                            .addComponent(lblLado3))
+                        .addGap(35, 35, 35))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel8)
+                        .addGap(26, 26, 26)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(unitIn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVal3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVal1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVal2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -115,7 +152,11 @@ public class SolidAll extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLado3)
                     .addComponent(txtVal3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(unitIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));
@@ -124,19 +165,35 @@ public class SolidAll extends javax.swing.JFrame {
 
         jLabel4.setText("Area");
 
+        unitOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unitOutActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Units");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtVolume, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                    .addComponent(txtArea))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtVolume, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                            .addComponent(txtArea)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addComponent(unitOut, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -150,7 +207,11 @@ public class SolidAll extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(unitOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(153, 255, 153));
@@ -200,9 +261,9 @@ public class SolidAll extends javax.swing.JFrame {
                         .addGap(131, 131, 131)
                         .addComponent(shapeSelection, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                        .addGap(23, 23, 23)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -223,7 +284,7 @@ public class SolidAll extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -258,6 +319,8 @@ public class SolidAll extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
             SolidInterface solid=null;
+            Conversion conv=new Conversion();
+
             if(shapeSelection.getSelectedItem().equals(ShapesCatalog.CUBE)){
                 solid=new Cube(Float.parseFloat(txtVal1.getText()));
             }
@@ -273,7 +336,7 @@ public class SolidAll extends javax.swing.JFrame {
              else if(shapeSelection.getSelectedItem().equals(ShapesCatalog.FRUSTUM)){
                 solid=new Frustum(Float.parseFloat(txtVal3.getText()),Float.parseFloat(txtVal2.getText()),Float.parseFloat(txtVal1.getText()));
             }
-            ec.edu.espe.math.graphic.utils.PrinterUtil.printResults(txtArea, txtVolume, solid.area(), solid.volume());
+            ec.edu.espe.math.graphic.utils.PrinterUtil.printResults(txtArea, txtVolume,conv.convertSquare(solid.area(), unitIn.getSelectedItem().toString(),unitOut.getSelectedItem().toString()),conv.convertVolume(solid.volume(), unitIn.getSelectedItem().toString(),unitOut.getSelectedItem().toString())) ;
         }catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, "INGRESE DATOS VALIDOS");
         }
@@ -285,6 +348,15 @@ public class SolidAll extends javax.swing.JFrame {
        mainMenu.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void unitInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitInActionPerformed
+        // lblUnits.setText(unitIn.getSelectedItem().toString());
+    }//GEN-LAST:event_unitInActionPerformed
+
+    private void unitOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitOutActionPerformed
+        // Conversion conv= new Conversion();
+        //  conv.convert(Float.parseFloat(txtPerimeter.getText()), , unit2)
+    }//GEN-LAST:event_unitOutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,6 +402,8 @@ public class SolidAll extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -342,5 +416,7 @@ public class SolidAll extends javax.swing.JFrame {
     private javax.swing.JTextField txtVal2;
     private javax.swing.JTextField txtVal3;
     private javax.swing.JTextField txtVolume;
+    private javax.swing.JComboBox<String> unitIn;
+    private javax.swing.JComboBox<String> unitOut;
     // End of variables declaration//GEN-END:variables
 }
